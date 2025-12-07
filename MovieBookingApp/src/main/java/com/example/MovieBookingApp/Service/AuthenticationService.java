@@ -6,6 +6,7 @@ import com.example.MovieBookingApp.DTO.LoginResponseDTO;
 import com.example.MovieBookingApp.DTO.RegisterRequestDTO;
 import com.example.MovieBookingApp.Entity.User;
 import com.example.MovieBookingApp.Repository.UserRepository;
+import com.example.MovieBookingApp.jwt.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
