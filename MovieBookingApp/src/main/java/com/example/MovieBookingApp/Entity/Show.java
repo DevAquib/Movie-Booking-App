@@ -1,5 +1,6 @@
 package com.example.MovieBookingApp.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "shows")
 @Data
 public class Show {
 
@@ -25,6 +27,7 @@ public class Show {
     private Theatre theatre;
 
     @OneToMany(mappedBy = "show", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Booking>bookings;
 
 }

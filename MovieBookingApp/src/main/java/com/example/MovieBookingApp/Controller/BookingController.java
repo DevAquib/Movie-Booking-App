@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/booking")
 public class BookingController {
 
     @Autowired
@@ -38,7 +40,7 @@ public class BookingController {
         return ResponseEntity.ok(bookingService.confirmBooking(id));
     }
 
-    @PutMapping("{id}/confirm")
+    @PutMapping("{id}/cancel")
     public ResponseEntity<Booking> cancelBooking(@PathVariable Long id){
         return ResponseEntity.ok(bookingService.cancelBooking(id));
     }

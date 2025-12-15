@@ -1,8 +1,7 @@
 package com.example.MovieBookingApp.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -12,6 +11,8 @@ import java.util.List;
 @Data
 public class Movie {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     private String name;
     private String description;
@@ -21,6 +22,7 @@ public class Movie {
     private LocalDate releaseDate;
 
     @OneToMany(mappedBy = "movie" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Show> show;
 
 }

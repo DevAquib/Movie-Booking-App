@@ -10,6 +10,7 @@ import com.example.MovieBookingApp.Repository.ShowRepository;
 import com.example.MovieBookingApp.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.webauthn.management.UserCredentialRepository;
+import org.springframework.stereotype.Service;
 
 import java.awt.print.Book;
 import java.time.LocalDateTime;
@@ -17,6 +18,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
+@Service
 public class BookingService {
 
 
@@ -113,7 +116,7 @@ public class BookingService {
 
 
     public List<Booking>getBookingsByStatus(BookingStatus bookingStatus){
-        return bookingRepository.findBookingByStatus(bookingStatus);
+        return bookingRepository.findBookingByBookingStatus(bookingStatus);
     }
 
 

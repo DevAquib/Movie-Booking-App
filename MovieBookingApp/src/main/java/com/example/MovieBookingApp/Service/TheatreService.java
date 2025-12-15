@@ -20,19 +20,19 @@ public class TheatreService {
         Theatre theatre=new Theatre();
 
         theatre.setTheatreName(theatreDTO.getTheatreName());
-        theatre.setTheatreCapacity(theatre.getTheatreCapacity());
-        theatre.setTheatreLocation(theatre.getTheatreLocation());
-        theatre.setTheatreScreenType(theatre.getTheatreScreenType());
+        theatre.setTheatreCapacity(theatreDTO.getTheatreCapacity());
+        theatre.setTheatreLocation(theatreDTO.getTheatreLocation());
+        theatre.setTheatreScreenType(theatreDTO.getTheatreScreenType());
         return theatreRepository.save(theatre);
     }
 
     public List<Theatre> getTheatreByLocation(String location){
-        Optional<List<Theatre>> listOfTheatreBox=theatreRepository.findByLocation(location);
+        Optional<List<Theatre>> listOfTheatreBox=theatreRepository.findByTheatreLocation(location);
         if(listOfTheatreBox.isPresent()){
             return listOfTheatreBox.get();
         }
         else{
-            throw new RuntimeException("No Theatres found for the location "+location);
+            throw new RuntimeException("No Theatres found for t he location "+location);
 
         }
     }
@@ -40,9 +40,9 @@ public class TheatreService {
     public Theatre updateTheatre(Long id,TheatreDTO theatreDTO){
         Theatre theatre=theatreRepository.findById(id).orElseThrow(()->new RuntimeException("No theatre found for id "+id));
         theatre.setTheatreName(theatreDTO.getTheatreName());
-        theatre.setTheatreLocation(theatre.getTheatreName());
-        theatre.setTheatreCapacity(theatre.getTheatreCapacity());
-        theatre.setTheatreScreenType(theatre.getTheatreScreenType());
+        theatre.setTheatreLocation(theatreDTO.getTheatreLocation());
+        theatre.setTheatreCapacity(theatreDTO.getTheatreCapacity());
+        theatre.setTheatreScreenType(theatreDTO.getTheatreScreenType());
 
         return theatreRepository.save(theatre);
 

@@ -1,5 +1,6 @@
 package com.example.MovieBookingApp.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 @Table(name="users")
 public class User implements UserDetails {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String email;
@@ -26,6 +29,7 @@ public class User implements UserDetails {
 
 
     @OneToMany(mappedBy = "user" , fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Booking> bookings;
 
     @Override
